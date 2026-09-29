@@ -1,0 +1,169 @@
+# =============================================================================
+#  Blender_engine - .gitignore
+#  Repo = our pipeline code only (main.py, blender_scripts/*.py, app/, zlendo_llm/,
+#  tools/, scene_optimizer*.py, setup/run scripts).
+#  The Blender engine itself (source, build, CUDA/OptiX SDKs) stays on disk
+#  but is NOT committed - it is multi-GB and can be rebuilt with
+#  SETUP_GPU_BLENDER.bat from the blender/ checkout (tag v5.2.0).
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Blender engine: source checkout, build output, GPU SDKs
+# -----------------------------------------------------------------------------
+# Blender source (its own git repo, tag v5.2.0)
+/blender/
+# compiled blender.exe + libs (and any other build config)
+/build_windows_x64_vc18_Release/
+/build_*/
+# CUDA toolkit redistributables (cuda_13.4.2, ...) and OptiX SDK headers
+/cuda_*/
+/optix_sdk/
+# installer zips left by setup_gpu_blender.ps1
+/_gpu_downloads/
+# old Godot binaries, if ever copied back
+/godot/
+
+# -----------------------------------------------------------------------------
+# Python
+# -----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+*.so
+.Python
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+wheels/
+sdist/
+*.egg-info/
+*.egg
+.installed.cfg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+/venv/
+venv/
+env/
+ENV/
+.venv/
+
+# Node (gltf-transform / draco helpers)
+node_modules/
+package-lock.json
+
+# -----------------------------------------------------------------------------
+# Secrets / local credentials
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+login_details.txt
+
+# -----------------------------------------------------------------------------
+# Runtime / generated folders
+# -----------------------------------------------------------------------------
+/output_renders/
+/output_glb/
+/uploads/
+/failed_inputs/
+/input_json/
+/logs/
+/ai_logs/
+/godot_logs/
+/culling_logs/
+/asset_downloads/
+/asset_downloads_new/
+/backup/
+/audio/
+/ffmpeg/
+tmp/
+temp/
+
+# Logs
+*.log
+
+# -----------------------------------------------------------------------------
+# Render outputs, textures, HDRIs, scenes (large binaries)
+# NOTE: this also ignores blender_scripts/day.exr (~340 MB, over GitHub's
+#       100 MB limit) - keep it on disk / share it separately.
+# -----------------------------------------------------------------------------
+*.exr
+*.hdr
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.tif
+*.tiff
+*.bmp
+*.ies
+
+# 3D scenes / models
+*.blend
+*.blend1
+*.blend2
+*.blend@
+*.glb
+*.gltf
+*.fbx
+*.obj
+*.mtl
+
+# Video
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# -----------------------------------------------------------------------------
+# JSON scene inputs / test data (image.json etc.)
+# -----------------------------------------------------------------------------
+*.json
+
+# -----------------------------------------------------------------------------
+# AI models
+# -----------------------------------------------------------------------------
+Realistic_Vision_V6.0_B1_noVAE/
+Realistic_Vision_V5.1_noVAE/
+*.safetensors
+*.ckpt
+*.bin
+*.pt
+*.pth
+*.onnx
+*.gguf
+
+# -----------------------------------------------------------------------------
+# Archives
+# -----------------------------------------------------------------------------
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+
+# -----------------------------------------------------------------------------
+# Databases
+# -----------------------------------------------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+
+# -----------------------------------------------------------------------------
+# IDE / OS
+# -----------------------------------------------------------------------------
+.vscode/
+.idea/
+.vs/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini

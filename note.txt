@@ -1,0 +1,28 @@
+# install torch
+pip install torch==2.2.2+cu121 torchvision==0.17.2+cu121 torchaudio==2.2.2+cu121 --index-url https://download.pytorch.org/whl/cu121
+pip install torch==2.5.1+cu121 torchvision==0.20.1+cu121 torchaudio==2.5.1+cu121 --extra-index-url https://download.pytorch.org/whl/cu121
+ 
+# working here
+.\venv\Scripts\python.exe -m pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+ 
+#check setup isnide venv run this comment 
+.\venv\Scripts\python.exe gpu_tensor_test.py
+ 
+# works here
+.\venv\Scripts\python.exe gpu_tensor_test.py
+ 
+# run server
+.\venv\Scripts\python.exe -m uvicorn main:app --host 0.0.0.0 --port 8000
+
+setup node for draco reconstruction
+npm install --no-save @gltf-transform/core @gltf-transform/extensions @gltf-transform/functions draco3dgltf
+
+
+# to test engine and get actual console log use this command
+& "C:\Zlendo2026\ZlenderRender_stage_copy\godot\bin\godot.windows.editor.x86_64.console.exe" --path "C:\Zlendo2026\ZlenderRender_stage_copy\godot_project" --headless --check-only --script "res://image_glb_creation.gd" 2>&1 | Select-Object -First 20
+
+# To test ONLY for fatal errors (Parse Error / SCRIPT ERROR / Failed to load):
+& "C:\Zlendo2026\ZlenderRender_stage_copy\godot\bin\godot.windows.editor.x86_64.console.exe" --path "C:\Zlendo2026\ZlenderRender_stage_copy\godot_project" --headless --check-only --script "res://image_glb_creation.gd" 2>&1 | Select-String -Pattern "Parse Error|SCRIPT ERROR|Failed to load" | Select-Object -First 5
+
+# check if the scene setup/load is correct use command 
+& "C:\Zlendo2026\ZlenderRender_stage_copy\godot\bin\godot.windows.editor.x86_64.console.exe" --path "C:\Zlendo2026\ZlenderRender_stage_copy\godot_project" --headless --script "res://image_glb_creation.gd" 2>&1
